@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calories Count</title>
+</head>
+<body >
+    <h1 id="main-header">Calorie calculator</h1>
+	<!-- TO-DO:
+		1. Heading summing what is the below content for
+		2. Some content on the screen explaing what is this all about -->
+
+	<form class="form" id="user-data">
+		<!-- TO-DO : 
+			1. constraints to only except numbers(whole and decimal) -->
+		<input name="age" type="text" placeholder="age"><br><br>
+		
+		<!-- TO-DO : 
+			1. choice to select metric (cms, inches, feet)
+			2. constraints to only except numbers(whole and decimal) -->
+		<input name="height" type="text" placeholder="height in inches"><br><br>
+		
+		<!-- TO-DO : 
+			1. choice to select metric (kg, lbs or whatever)
+			2. constraints to only except numbers(whole and decimal) -->
+		<input name="weight" type="text" placeholder="weight in pounds"><br><br>
+		
+		<!-- TO-DO : 
+			1. hints explaining what are diffrent fitness levels
+			2. place holder instead of 'selected' as default option -->
+		<select id="fitnessLevel" name="fitnessLevel" placeholder="fitness-level">
+		    <option value="fitness-level" disabled selected hidden>fitness level</option>
+			<option value="sedentary">Sedentary</option>
+			<option value="lightly-acitve">Lightly acitve</option>
+			<option value="moderately-active">Moderately active</option>
+			<option value="very-active">Very active</option>
+			<option value="extremly-active">Extremly active</option>
+		</select><br><br>
+
+		<!-- TO-DO : 
+			1. try giving multiple options -->
+		<select id="gender" name="gender">
+			<option value="gender" disabled selected hidden>gender</option>
+			<option value="male">male</option>
+			<option value="female">female</option>
+		</select><br><br>
+
+		<button type="submit" id="submit"><h3>Calculate calories</h3></button>
+	</form>
+
+	
+	<div id=calories  hidden="hidden">
+	</div>
+	<script>
+		// const calForm = document.getElementById('user-data');
+		const calForm = document.querySelector('.form');
+		calForm.addEventListener('submit',event=> {
+			event.preventDefault();
+			const formData = new FormData(calForm);
+			const data = Object.fromEntries(formData);
+			fetch('http://18.224.52.79:8080/cal',{
+					method : 'POST',
+					headers : {'Content-Type' : 'application/json'},
+					body : JSON.stringify(data)
+				})
+				.then(res => {return res.json();})
+				.then(data => { 
+					const caloriesDiv = document.getElementById("calories");
+					caloriesDiv.removeAttribute("hidden");
+					const amountOfCals = data.amoutOfCalories;
+					const calCount = document.createElement("h3");
+					calCount.innerHTML = 'You need '+amountOfCals.toFixed(2)+' calories per day';
+					caloriesDiv.appendChild(calCount);
+				})
+				.catch(error => console.log(error));
+		});
+	</script>
+
+	
+
+</body>
+</html>

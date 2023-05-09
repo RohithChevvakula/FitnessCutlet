@@ -1,0 +1,8 @@
+com/rohith/FitnessCutlet/api/model/CalcResponse.class
+com/rohith/FitnessCutlet/service/CalcService.class
+com/rohith/FitnessCutlet/FitnessCutletApplication.class
+com/rohith/FitnessCutlet/service/Math.class
+com/rohith/FitnessCutlet/api/model/UserData.class
+com/rohith/FitnessCutlet/api/controller/CalcController.class
+com/rohith/FitnessCutlet/api/controller/IndexController.class
+com/rohith/FitnessCutlet/service/Bmr.class
