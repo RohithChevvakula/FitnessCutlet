@@ -1,8 +1,9 @@
 #FitnessCutlet
 
-Pain point: People tend to loose their track in the journey of fitness, over a period of time. 
+Pain point: People tend to lose their track in the journey of fitness, over a period of time. 
 
 Solution: Tracking the journey in the app by logging weight, body dimensions, food intake, cheat days, etc.
+safa
 
 Features:
  1. Onboarding
@@ -23,6 +24,6 @@ Features:
  - guidance on form by showing animations/gifs/videos on a specific workout
  - charts and graphs tracking the progress of goals
  - food and water intake logger
- - ablility to share progress on social media be it chart, graph, log, photo, video 
+ - ability to share progress on social media be it chart, graph, log, photo, video 
  
  
